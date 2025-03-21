@@ -6,6 +6,12 @@
 //! ULIDs can optionally be serialized as u128 integers using the `ulid_as_u128`
 //! module. See the module's documentation for examples.
 
+#[cfg(not(feature = "std"))]
+extern crate alloc;
+#[cfg(not(feature = "std"))]
+use alloc::string::String;
+
+
 use crate::{Ulid, ULID_LEN};
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 
